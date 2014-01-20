@@ -1,0 +1,89 @@
+---
+layout: post
+title:  "Proyecto #1"
+subtitle:  "Juego"
+date:   2014-01-23 21:28:27
+categories: proyects
+published: true
+due_date: 2014-01-29
+excerpt: Juego escrito en C, utilizando la librería Allegro.
+tags: c games allegro
+---
+
+## Objetivos
+
+En este proyecto usted debe aplicar todos los conocimientos adquiridos durante la clase sobre el lenguaje C:
+
+- Algoritmos y estructuras de datos
+- Desarrollo modular de aplicaciones
+- Utilización de punteros
+- Manejo y gestión eficiente de la memoria
+
+--
+
+## Ambiente de trabajo
+
+Para este proyecto no está restringido a ANSI C, le recomendamos utilizar Allegro pero tampoco está restringido al uso exclusivo de esta librería.
+
+--
+
+## Procedimiento
+
+Debe desarrollar un videojuego utilizando el lenguaje C, puede implementar el tipo de juego que desee.  
+Por lo que la única límitante es su creatividad :) ¡Ah sí, y el **tiempo de desarrollo**!
+
+Es muy importante que entreguen una propuesta de proyecto el jueves 30 de enero, conteniendo la siguiente información:
+
+- Título del juego
+- Integrantes del grupo y nombre del grupo
+- Género del juego (RPG, FPS, RTS, MMOG, etc).
+- Descripción general del juego.
+- Detalle de las pantallas.
+- Descripción del gameplay.
+- ¿Qué diferencia a su juego de los demás?
+
+Este documento servirá para guiarles y evitar que al momento de compilar obtengamos el error *Creativity Overflow* debido a las limitaciones de tiempo que se tienen para el proyecto.
+
+Adicionalmente es permitido que utilice algunas de las librerías más comunes para el desarrollo de videojuegos, tales como:
+
+- Allegro (recomiendación del chef)
+- DirectX
+- OpenGL
+
+Las dos últimas son las librerías más utilizadas comercialmente para el desarrollo de juegos en 3D. Lo recomendado es que utilice Allegro, y pero si desea realizar su proyecto en 3D podría experimentar con las librerías de Allegro/OpenGL. 
+
+Recuerde que el objetivo del proyecto es la aplicación de los **conceptos aprendidos del lenguaje C**, y no del conocimiento de las librerías, las mismas son sólo una herramienta para agilizar y facilitar su proyecto.
+
+Se permite la utilización de clases de C++ para la ejecución de audio y video, etc. **No se pueden utilizar estructuras de datos disponibles únicamente en ese lenguaje**.
+
+No se pueden utilizar frameworks, game engines o similares (XNA, Torque, Ogre3D, Irrlicht, etc.) ya que estos contienen mucha funcionalidad implementada :( por lo que desarrollar un juego ya no es tan divertido.
+
+--
+
+## Evaluación
+
+Como requisito para la revisión presencial deberán entregar un CD o DVD con el proyecto completo, tanto código, como la multimedia necesaria para la ejecución del programa.
+
+Es importante que se concentren en que su juego funcione bien con los features básicos antes de iniciar cualquier parte de extras, no olviden que lo importante es la jugabilidad, traten de concentrarse en el funcionamiento del juego más que en conseguir imágenes chileras y perder mucho tiempo en esto.
+
+### ¿Cómo puedo conseguir puntos extras?
+
+Implementando features adicionales, por ejemplo:
+
+- Integración para la ejecución de partes del juego con otras plataformas(xbox, psp, celular, etc.)
+- Utilización de hardware adicional (webcams, wiimotes, bluetooth, etc.). 
+- Los gamepads y joysticks no son hardware adicional, ya que allegro provee dicha funcionalidad.
+- Playback de video en su programa. ¡Es su propio juego! Graben y actuen a los personajes :-)
+- Opción para jugar en red. ¿Qué grupo será el primero en la historia de CCIII en implementar esto?
+- (nota: ya lo hizo alguien! en el 2010, ¿quién será el segundo? :P)
+- Nivel de dificultad e implementación de inteligencia artificial.
+
+--
+
+## Entrega
+
+La entrega se realizará a través del `GES` antes de las **23:55:00** del **Domingo 23 de febrero de 2014** debe enviar un archivo llamado `nombre-proyecto.zip` conteniendo todos los archivos necesarios para compilar y ejecutar su programa (imágenes, librerías, archivos de audio y video, etc.).
+
+Si el archivo llega a ser muy grande (> 5MB), entregue únicamente el código fuente.
+
+--

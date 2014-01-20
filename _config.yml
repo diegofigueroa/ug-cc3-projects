@@ -1,0 +1,6 @@
+name: Proyectos
+pygments: true
+timezone: America/Guatemala
+relative_permalinks: false
+baseurl: /ug-cc3-projects
+permalink: none

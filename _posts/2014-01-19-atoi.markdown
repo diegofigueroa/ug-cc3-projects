@@ -1,0 +1,130 @@
+---
+layout: post
+title:  "Proyecto #1"
+subtitle:  "Juego"
+date:   2014-01-23 21:28:27
+categories: labs
+published: true
+due_date: 2014-01-29
+excerpt: Juego escrito en C, utilizando la librería Allegro.
+tags: c games allegro
+---
+
+## Objetivos
+
+- Poner en práctica conceptos básicos del lenguaje C, como funciones y control de flujo.
+- Comprender la representación a través de código ASCII.
+- Trabajar con arreglos de caracteres, previo al trabajo con punteros.
+- Recordar un poco de bases no decimales.
+- No ver las funciones atoi/itoa como una caja negra, si no saber cómo funcionan.
+
+---
+
+## Ambiente de trabajo
+
+Debe tener listo todo el ambiente de trabajo, si tiene dudas sobre configuración, consulte el [Laboratorio #1](/ug-cc3-labs/labs/calculator.html).
+
+--
+
+## Descripción
+
+Internamente, la computadora únicamente puede almacenar números (0's y 1's) y cuando queremos guardar palabras es necesario tener cierto código para representar las letras a través de números. El código más utilizado para este fin es el código [ASCII](http://es.wikipedia.org/wiki/ASCII), en el cual un número de 8 bits (8 digitos binarios) representa a cada letra.
+
+Dado que es posible representar digitos numéricos también, a los mismos números se les ha asignado un código ASCII. Por ello por ejemplo, el caracter que representa al número 0, el ASCII ‘0’ tiene el número 48 asignado, todos los códigos están disponibles en la [tabla ASCII](http://www.asciitable.com/).
+
+Cuando tenemos una cadena de caracteres que representa a un número es muy común que querramos convertir la cadena al número que representa, teniendo un solo número es muy fácil e intuitivo pues solo hay que restarle el decimal 48.
+
+Pero al tener más de un digito el asunto se vuelve un poco más complejo y eso es lo que realiza la función `atoi` (ASCII to Integer).
+
+La libreria `stdlib.h` incluye una implementación de esta función pero para este laboratorio **haremos nuestra propia implementación**.
+
+--
+
+## Ejercicio #1
+
+Deberá implementar la función atoi -que convierte cadenas representando números de distintas bases a números en base decimal- con la siguiente firma:
+
+{% highlight c %}
+int miatoi(char s[], int b)
+{% endhighlight %}
+
+Siendo `char s[]` un arreglo de carácteres (a.k.a. string), que contiene cierto número en cierta base númerica establecida por el segundo parámetro `int b`.
+
+Esto quiere decir que su función será llamada, por ejemplo así:
+
+{% highlight c %}
+int num = miatoi("15",10) /* la variable num tendría entonces el número 15 */
+{% endhighlight %}
+
+Para las bases no decimales hay ciertos estándares, por ejemplo si la base es octal(base 8) se antepone un ‘0’ al número y si la base es hexadecimal(16) se antepone ‘0x’ al número.
+
+Recuerde que un sistema númerico de base N tiene N símbolos que van desde 0 hasta N-1, el sistema decimal(base 10) cuenta con los símbolos 0,1,2,3,4,5,6,7,8 y 9 ergo el sistema octal (base 8) cuenta con los símbolos 0,1,2,3,4,5,6 y 7.
+
+Cuando se acaban los números empezamos a utilizar las letras, entonces el sistema hexadecimal (base 16) cuenta con los símbolos 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F.
+
+Por lo anterior, su función también puede recibir llamadas de la siguiente forma:
+
+{% highlight c %}
+int num = miatoi("0xf",16) /* la variable num contendria entonces el número 15 */
+
+int num = miatoi("0xF",16) /* la variable num contendria entonces el número 15 */
+
+int num = miatoi("F",16) /* la variable num contendria entonces el número 15 */
+
+int num = miatoi("f",16) /* la variable num contendria entonces el número 15 */
+{% endhighlight %}
+
+Debe notar que al recibir letras pueden ser tanto **mayúsculas** como **minúsculas**, de la misma forma por si a caso se le olvida a alguien colocar el prefijo ‘0x’ en los hex o ‘0’ en los octales no debe mostrarse ningún error y realizar la conversión correctamente al igual que si los prefijos si se colocan. Únicamente para estas dos bases se tienen prefijos estandarizados.
+
+Si en caso el input recibido fuera inválido su función debe devolver cero, por ejemplo:
+
+{% highlight c %}
+int num = miatoi("0xf",10)
+{% endhighlight %}
+
+Se considera un input inválido cuando la cadena contiene símbolos no válidos para la base dada y en ese caso, la función devolverá 0. Recuerde tomar en cuenta el signo del número.
+
+--
+
+## Ejercicio #2
+
+Deberá implementar la función `itoa`, que tal como se lo imagina realiza lo opuesto de `atoi`, itoa (Integer TO ASCII), convierte un número entero a una cadena de caracteres.
+
+La firma para la función itoa que usted debe realizar es:
+
+{% highlight c %}
+void miitoa(int n, int b, char s[])
+{% endhighlight %}
+
+Esta función devuelve un string, pero aun nos falta ver algunas cosas en cuanto a los punteros y a los arreglos de caracteres por lo que para este laboratorio la función será de tipo void y rellenará un arreglo de carácteres que recibe como argumento en `char[] s`. 
+
+Al igual que en el caso anterior, su programa recibe una base númerica a través del argumento `int b` y recibe también el número a convertir en `int n`. 
+
+Es importante notar que el número recibido se encuentra en base 10 y el argumento `int b` indica la base a la que lo voy a pasar en la cadena.
+
+La función `itoa` será llamada, por ejemplo así:
+
+{% highlight c %}
+char num[4]; /* en ese espacio cabe la respuesta y al final va un \0 */
+
+miitoa(0xF,10,num); /* llamada a la función */
+
+printf("%s",num); /* la cadena num contiene el valor y se imprime a pantalla 15*/
+
+miitoa(12,16,num);
+
+printf("%s\n",num); /* la cadena num contiene el valor y se imprime a pantalla 0xB*/
+{% endhighlight %}
+
+Recuerde que cuando se trate de base octal o hexadecimal, antepondrá los prefijos como corresponda (‘0’ y ‘0x’).  
+
+Al igual que `atoi`, la función `itoa` debe tomar en cuenta el signo del número para la base 10, por ejemplo -1 es válido pero -0xf no lo es.
+
+--
+## Entrega
+
+La entrega se realizará a través del `GES` antes de las **23:55:00** del día **Miércoles 29 de enero 2014**, debe enviar un archivo llamado `carnet.c` conteniendo su programa.  
+  
+No envíe archivos `.zip`, `.rar` , `.7z` o similares. Si lo hace, su respuesta **no** será tomada en cuenta.
+
+--

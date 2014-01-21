@@ -31,6 +31,7 @@ Para este proyecto no está restringido a ANSI C, le recomendamos utilizar Alleg
 
 Debe desarrollar un videojuego utilizando el lenguaje C, puede implementar el tipo de juego que desee.  
 Por lo que la única límitante es su creatividad :) ¡Ah sí, y el **tiempo de desarrollo**!
+Puede trabajar en grupos de hasta **2 personas**.
 
 Es muy importante que entreguen una propuesta de proyecto el jueves 30 de enero, conteniendo la siguiente información:
 

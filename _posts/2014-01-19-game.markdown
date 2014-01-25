@@ -87,4 +87,7 @@ La entrega se realizará a través del `GES` antes de las **23:55:00** del **Dom
 
 Si el archivo llega a ser muy grande (> 5MB), entregue únicamente el código fuente.
 
+Adicionalmente, deben realizar un video que muestre la jugabilidad de su juego, sean creativos y muestren cuán divertido y original su juego es.
+Este video deben subirlo a youtube.com y entregar un archivo con el link al mismo dentro de lo que suban al GES.
+
 --

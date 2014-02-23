@@ -1,0 +1,216 @@
+---
+layout: post
+title:  "Proyecto #2"
+subtitle:  "Sprintf"
+date:   2014-02-23 21:28:27
+categories: proyects
+published: true
+due_date: 2014-03-23
+excerpt: Función escrita en assembler de MIPS que provee funcionalidades parecidas a printf de C.
+tags: mips printf assembler
+---
+
+## Objetivos
+
+- Algoritmos y manejo de strings en MIPS
+- Preparación, física y mental para el proyecto del ensamblador
+- Graduarse como programador de assembler <:o)
+
+--
+
+## Procedimiento
+
+Deberá implementar la función `sprintf`, una versión del `printf` de C. `sprintf` funciona parecido a `printf`, excepto que escribe a un **buffer de salida** (outbuf)
+en lugar de escribir a la salida estándar (normalmente la pantalla). 
+Se asume que `outbuf` apunta a un espacio reservado de memoria de tamaño suficiente para almacenar todos los caracteres del resultado. 
+
+El prototipo de la función sprintf está dado por :
+
+{% highlight c %}
+/**
+* outbuf - puntero al buffer de memoria donde se escribe el resultado.
+* format - puntero al string de 'formato', el cual describe como se debe generar el string resultante.
+* ... - lista de valores opcionales a interpolar en el string resultante.
+**/
+int sprintf(char *outbuf, char *format, ...)
+{% endhighlight %}
+
+### Argumentos
+
+Su función debe aceptar **cualquier cantidad** de argumentos, siendo estos transferidos utilizando un convenio diferente al estandar de MIPS.
+Los argumentos son pasados **a través del stack**, siendo el primer argumento la posición **más baja del stack**. Es decir, `0($sp)` apunta hacia el inicio de `outbuf` (buffer donde se almacena el resultado), `4($sp)` apunta al inicio de `format` (cadena de caracteres que trae el formato para los argumentos) y el resto apunta a argumentos opcionales.
+
+- El primer argumento es la dirección del buffer donde debe quedar el resultado final.
+
+- El segundo argumento es la dirección en donde se encuentra un string conteniendo el formato, dnde cada ocurrencia del signo de porcentaje `%` indica dónde debe ser insertado el argumento siguiente y cómo debe ser su formato.
+
+- Los argumentos restantes son valores que serán convertidos a caracteres imprimibles, de acuerdo al formato especifícado.
+
+### Retorno
+
+`sprintf` devuelve la dirección donde inicia el puntero a donde escribió el string de salida.
+
+--
+
+## Implementación
+
+No necesita implementar validaciones (i.e. comparar la cantidad de argumentos con la cantidad de %).
+No requiere tampoco implementar modificadores de precisión tales como %5x).
+Además no debe implementar todas las opciones de formato que tiene `printf`, solamente los siguientes:
+
+- %%: incluye un signo de porcentaje en el resultado, si se recibe "%%" el output debería ser "%".
+
+- %c: incluye un caracter en el resultado.
+
+- %s: incluye un string de caracteres en el resultado.
+
+- %b: convierte un entero a binario (sin signo) y es incluido en el resultado (recuerde eliminar »ceros a la izquierda«).
+
+- %x: convierte un entero a hexadecimal y es incluido en el resultado (recuerde eliminar »ceros a la izquierda« 0xF en lugar de 0x00F).
+
+- %i: convierte un entero a un decimal con signo y es incluido en el resultado.
+
+- %u: convierte un entero a un decimal sin signo y es incluido en el resultado.
+
+- Identificadores inválidos: Si recibe una secuencia de escape no especificada en los casos anteriores, simplemente copie el caracter. Sin embargo su código no debe mostrar un error bajo estas circunstancias. Por ejemplo, "%Q" devolvería "Q".
+
+### Algo de ayuda
+
+Puede utilizar el siguiente código que contiene algunas pruebas básicas:
+
+	.data 
+		string1:	.asciiz "sin argumentos\n"
+		string2:	.asciiz "Porcentaje %%\n"
+		string3:	.asciiz "Las palabras magicas son %s\n"
+		word:    	.asciiz "squeamish ossifrage"
+		string4:	.asciiz "Char %c\n"
+		string5:	.asciiz "Hex %x\n"
+		buffer:	.space 400
+		welcome:	.asciiz "Bienvenido al proyecto sprintf\n"
+		blank:	.asciiz "\n"
+	
+	.text
+		main:
+
+		#######################################
+		# Prueba de la funcion sin argumentos #
+		#######################################
+
+			la $a0 welcome
+			jal print_string
+			addi $sp $sp -20
+			la $t0 buffer
+			sw $t0 0($sp)
+			la $t0 string1
+			sw $t0 4($sp)
+			jal sprintf
+			add $s0 $v0 $0
+			la $a0 blank
+			jal print_string
+			add $a0 $s0 $0
+			jal print_string
+
+		##############################################################
+		# Prueba de la funcion que imprime un simbolo de porcentaje  #
+		##############################################################
+			la $t0 buffer
+			sw $t0 0($sp)
+			la $t0 string2
+			sw $t0 4($sp)
+			jal sprintf
+			add $s0 $v0 $0
+			la $a0 blank
+			jal print_string
+			add $a0 $s0 $0
+			jal print_string
+
+
+		#############################################################
+		# Prueba de la funcion que imprime una cadena de caracteres #
+		#############################################################
+			la $t0 buffer
+			sw $t0 0($sp)
+			la $t0 string3
+			sw $t0 4($sp)
+			la $t0 word
+			sw $t0 8($sp)
+			jal sprintf
+			add $s0 $v0 $0
+			la $a0 blank
+			jal print_string
+			add $a0 $s0 $0
+			jal print_string
+
+		#######################################################
+		# Prueba de la funcion que imprime un caracter (char) #
+		#######################################################
+			la $t0 buffer
+			sw $t0 0($sp)
+			la $t0 string4
+			sw $t0 4($sp)
+			la $t0 'C'
+			sb $t0 8($sp)
+			jal sprintf
+			add $s0 $v0 $0
+			la $a0 blank
+			jal print_string
+			add $a0 $s0 $0
+			jal print_string
+
+		################################################################
+		# Prueba de la funcion que imprime un numero hexadecimal (hex) #
+		################################################################
+			la $t0 buffer
+			sw $t0 0($sp)
+			la $t0 string5
+			sw $t0 4($sp)
+			la $t0 0xf00d
+			sw $t0 8($sp)
+			jal sprintf
+			add $s0 $v0 $0
+			la $a0 blank
+			jal print_string
+			add $a0 $s0 $0
+			jal print_string
+			j exit
+
+		exit:   
+		  li $v0 10	# exit
+		  syscall
+
+	.data
+		errorString:	.asciiz "Necesita Implementar esta Funcion!!!\n"
+
+	.text
+		print_string:
+			li $v0 4
+			syscall
+			jr $ra
+
+		################################
+		# FUNCION QUE DEBE IMPLEMENTAR #
+		################################
+
+		sprintf:
+			la $v0 errorString
+			jr $ra
+		# done
+
+## Evaluación
+
+La evaluación será hecha casi en su totalidad por **scripts automatizados**. Su output debe de corresponder exactamente al formato especificado, lo que hace que la exactitud sea la principal meta de este proyecto. 
+
+Nuestras rutinas añadirán una función principal a su archivo `carnet.s`, la cual proveerá una rutina principal y casos de prueba, por lo que todo el código necesario para la funcionalidad de su `sprintf` **debe estar en este archivo solamente** y su función **debe** llamarse `sprintf`.
+
+Adicionalmente, debe realizar un **video que muestre cómo funciona su función**, enseñe varias llamadas a su función utilizando diferentes valores de entrada, explicando
+cuál es el valor de retorno esperado.
+
+Este proyecto se trabajará de manera **individual**.
+
+--
+
+## Entrega
+
+La entrega se realizará a través del `GES` antes de las **23:55:00** del **Domingo 23 de marzo de 2014** debe enviar un archivo llamado `carnet.s` conteniendo todo su código de MIPS.
+
+--

@@ -16,8 +16,6 @@ Este proyecto esta diseñado para que el estudiante comprenda a detalle la funci
 
 Este proyecto nos enseña los detalles de la codificación, y las ventajas que tiene tener una arquitectura estándar, sin muchos casos especiales, pocos formatos de instrucciones, utilización de cualquier registro para cualquier operación aritmético-lógica, etc.
 
-
-
 --
 
 ## Procedimiento

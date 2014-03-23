@@ -3,7 +3,7 @@ layout: post
 title:  "Proyecto #3"
 subtitle:  "Ensamblador de MIPS"
 date:   2014-03-20 21:28:27
-categories: proyects
+categories: projects
 published: true
 due_date: 2014-04-27
 excerpt: Ensamblador de MIPS, escrito en MIPS.
@@ -455,9 +455,9 @@ Les recomendamos que lo **estudien**, **pueden modificarlo a su discreción** y 
 
 La evaluación será hecha de forma presencial, por lo que es muy importante que asista, si no lo hace, su nota automáticamente será de 0.
 
-Puede descargar la siguiente [hoja de cálculo](https://www.dropbox.com/s/hh1weakgcql3ez5/score.xls), en la cual encontrará la ponderación del proyecto, puede evaluarse a usted mismo según vaya progresando en su proyecto.
+Puede descargar la siguiente [hoja de cálculo](https://www.dropbox.com/s/trd1m22buqodv6o/score.xls), en la cual encontrará la ponderación del proyecto, puede evaluarse a usted mismo según vaya progresando en su proyecto.
 
-También hemos preparado una serie de [pruebas](https://www.dropbox.com/s/cvylc48xuqvqvle/tests.zip) que puede utilizar para probar el funcionamiento de su proyecto, estas pruebas no garantizan que saque 100 en su proyecto, 
+También hemos preparado una serie de [pruebas](https://www.dropbox.com/s/e92qr0cc0pmfeim/tests.zip) que puede utilizar para probar el funcionamiento de su proyecto, estas pruebas no garantizan que saque 100 en su proyecto, 
 sin embargo puede utilizarlas como referencia.
 
 Adicionalmente, debe realizar un **video que muestre cómo funciona su poyecto**, enseñe varias llamadas al mismo utilizando diferentes valores de entrada, explicando

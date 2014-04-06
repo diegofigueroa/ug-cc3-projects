@@ -4,7 +4,7 @@ title:  "Proyecto #4"
 subtitle:  "Unidad Básica"
 date:   2014-03-23 16:54:27
 categories: projects
-published: false
+published: true
 due_date: 2014-05-25
 excerpt: Simulación de un procesador básico.
 tags: processor

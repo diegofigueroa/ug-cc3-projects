@@ -62,7 +62,7 @@ Hay 2 formatos de instrucciones:
 * 4 bits Rdest (Registro que interviene en la operación) bits 8-11
 * 8 bits Imm (Para un valor inmediato) bits 0-7
 
-Para **información detallada** de cada una de las instrucciones puede referirse a la [documentación](https://www.dropbox.com/s/hcdulxqa19jxvcl/isa.pdf):
+Para **información detallada** de cada una de las instrucciones puede referirse a la [documentación](https://www.dropbox.com/s/hcdulxqa19jxvcl/isa.pdf).
 
 ### Acerca de los registros:
 

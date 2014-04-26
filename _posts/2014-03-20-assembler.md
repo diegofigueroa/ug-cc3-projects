@@ -460,7 +460,7 @@ Puede descargar la siguiente [hoja de cálculo](https://www.dropbox.com/s/trd1m2
 También hemos preparado una serie de [pruebas](https://www.dropbox.com/s/e92qr0cc0pmfeim/tests.zip) que puede utilizar para probar el funcionamiento de su proyecto, estas pruebas no garantizan que saque 100 en su proyecto, 
 sin embargo puede utilizarlas como referencia.
 
-Adicionalmente, debe realizar un **video que muestre cómo funciona su poyecto**, enseñe varias llamadas al mismo utilizando diferentes valores de entrada, explicando
+Adicionalmente, debe realizar un **video que muestre cómo funciona su proyecto**, enseñe varias llamadas al mismo utilizando diferentes valores de entrada, explicando
 cuál es el valor de retorno esperado.
 
 --

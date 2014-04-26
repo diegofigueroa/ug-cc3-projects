@@ -50,16 +50,19 @@ Hay 2 formatos de instrucciones:
 
 ### Tipo “R”:
 
-4 bits op-code (Código de la instrucción) bits 12-15
-4 bits Rdest (Registro destino) bits 8-11
-4 bits Rsrc1 (Registro que identifica al operador 1) bits 4-7
-4 bits Rsrc2 (Registro que identifica al operador 2) bits 0-3
+* 4 bits op-code (Código de la instrucción) bits 12-15
+* 4 bits Rdest (Registro destino) bits 8-11
+* 4 bits Rsrc1 (Registro que identifica al operador 1) bits 4-7
+* 4 bits Rsrc2 (Registro que identifica al operador 2) bits 0-3
 
 
 ### Tipo “I”:
-4 bits op-code (Código de la instrucción) bits 12-15
-4 bits Rdest (Registro que interviene en la operación) bits 8-11
-8 bits Imm (Para un valor inmediato) bits 0-7
+
+* 4 bits op-code (Código de la instrucción) bits 12-15
+* 4 bits Rdest (Registro que interviene en la operación) bits 8-11
+* 8 bits Imm (Para un valor inmediato) bits 0-7
+
+Para información detallada de cada una de las instrucciones puede referirse a la [documentación](https://www.dropbox.com/s/hcdulxqa19jxvcl/isa.pdf):
 
 ### Acerca de los registros:
 
@@ -81,6 +84,8 @@ Puede diseñar su procesador como crea más conveniente, con la restricción que
 
 La evaluación será hecha de forma presencial, por lo que es muy importante que asista, si no lo hace, su nota automáticamente será de 0.
 
+Este proyecto se trabajará de manera **individual**.
+
 Este proyecto se calificara de la siguiente manera:
 
 - 50% por tener las operaciones de ALU(20%) y los registros(20%) funcionando en conjunto con li y lui (10%)
@@ -89,10 +94,10 @@ Este proyecto se calificara de la siguiente manera:
 - 100% por lo anterior y accesos a memoria (Lb, Sb) tanto lectura como escritura.
 - 120% por agregar pantalla y teclado ascii.
 
-Adicionalmente, debe realizar un **video que muestre cómo funciona su poyecto**, enseñe varias ejecuciones de su procesador, explicando el programa cargado y cómo debe
-ser su ejecición.
+Puede utilizar los componentes del siguiente [paquete](https://www.dropbox.com/s/duze632lyh5miy5/c316.jar), el cual incluye un **teclado**, **pantalla**, joystick entre otras cosas, más información [aquí](https://www.dropbox.com/s/4v8ikp12qst3sv4/toys.pdf).
 
-En los siguientes días de clases es altamente probable que escoja aleatoriamente a varias personas para que demuestren lo que han hecho del procesador, aquellos que no tengan nada que enseñar o no estén presentes tendrán puntos menos, aquellos que vayan adelantados tendrán puntos extras, con la limitante que el proyecto no puede valer más de 130pts.
+Adicionalmente, debe realizar un **video que muestre cómo funciona su proyecto**, enseñe varias ejecuciones de su procesador, explicando el programa cargado y cómo debe
+ser su ejecución.
 
 --
 
